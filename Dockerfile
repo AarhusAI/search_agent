@@ -37,7 +37,7 @@ FROM base AS dev
 RUN uv sync --frozen
 EXPOSE 8001
 HEALTHCHECK CMD curl -f http://localhost:8001/health || exit 1
-CMD ["uv", "run", "--no-sync", "uvicorn", "search_agent.main:app", "--host", "0.0.0.0", "--port", "8001"]
+CMD ["uv", "run", "--no-sync", "uvicorn", "search_agent.main:app", "--host", "0.0.0.0", "--port", "8001", "--reload"]
 
 # --- Prod target: runtime deps only ---
 FROM base AS prod
